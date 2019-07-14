@@ -38,11 +38,17 @@
 
         <div class="views">
 
-          <a href="#" onclick="backgroundChange1()"><img class="shop_thumbnail" src="img/360bg.jpg" alt=""></a>
+					<button id="rollToLeft"><img class="shop_thumbnail" src="img/360bg.jpg" alt=""></button>
+
+					<button id="rollToRight"><img class="shop_thumbnail" src="img/360bg.jpg" alt=""></button> <br>
+
+          <!-- <a href="#" onclick="backgroundChange1()"><img class="shop_thumbnail" src="img/360bg.jpg" alt=""></a>
           <a href="#" onclick="backgroundChange2()"><img class="shop_thumbnail" src="img/360bg.png" alt=""></a>
-          <br>
+          <br>-->
 
           <img class="thumb360" src="img/360_icon.png" alt="">
+
+
         </div>
 
       </div>

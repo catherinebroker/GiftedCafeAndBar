@@ -6,12 +6,12 @@ html, body {
 	overflow: hidden;
 }
 
-#top_bg {
+body {
   background-image: url("../img/360bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
+	background-size: 99% 100%;
+	background-position-x: 0%;
+	background-position-y: auto;
+  background-repeat: repeat-x;
 }
 
 .index_container {
@@ -78,6 +78,15 @@ img.shop_thumbnail {
   height: 54px;
   border: 1px solid #FFF;
   border-radius: 5px;
+}
+
+#rollToLeft,
+#rollToRight {
+	padding: 0;
+	width: 97px;
+  height: 54px;
+	background-color: rgba(255, 255, 255, 0);
+	border: none;
 }
 
 .views a {

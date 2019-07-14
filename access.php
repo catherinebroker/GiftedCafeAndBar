@@ -1,8 +1,9 @@
 <?php
 // define variables and set to empty values
-$to = "#";
+$to = "catherinemariebroker@gmail.com";
 $type = $name = $tel = $email = $mailCheck = $message = "";
-$typeErr = $nameErr = $emailErr = $mailcheckErr = $messageErr = $messageStatus = $tryAgainButton = "";
+$typeErr = $nameErr = $emailErr = $mailcheckErr = $messageErr = $messageStatus = "";
+$subject = "test";
 
 //Protect input values from malicious code
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,7 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = test_input($_POST["email"]);
   $mailCheck = test_input($_POST["mailCheck"]);
   $message = test_input($_POST["message"]);
+	$confirmed = $_POST["confirmed"];
 }
+
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -54,17 +57,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = test_input($_POST["message"]);
   }
 
-  // Check input values and send if everything is cool.
-  if (empty($_POST["name"]) || empty($_POST["email"]) || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($_POST["subject"]) || empty($_POST["message"])) {
-    $messageStatus = "Please check that every box has been completed and that the email address entered is valid.";
-    $tryAgainButton = "Click to try again";
+	$page_flag = 0;
 
+
+  // Check input values and send if everything is cool.
+  if (empty($name) || empty($email) || !filter_var($email) || empty($subject) || empty($message)) {
+    $messageStatus = "Please check that every box has been completed and that the email address entered is valid.";
   } else {
-    $messageStatus = "Thank you for your message! The following information has been sent!";
-    mail($to,$subject,$message,$email);
-    $tryAgainButton = "Send another message";
+    $page_flag = 1;
   }
 
+	// mail send
+	if($page_flag == '1' && $confirmed == 'true') {
+		mail($to, 'test', $message, $email);
+		$page_flag = 2;
+	}
  ?>
 
 <!DOCTYPE html>
@@ -83,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script type="text/javascript">
       function submitForm() {
+
         alert("<?= $messageStatus?><?= $nameErr?><?= $emailErr?><?= $messageErr?>");
       }
     </script>
@@ -122,7 +130,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <div class="header">
             <h1>Contact</h1>
           </div>
-          <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+					<?php if($page_flag == 0): ?>
+						<?php include('contact-form.php'); ?>
+					<?php elseif ($page_flag == 1): ?>
+						<?php include('confirm.php'); ?>
+					<?php else: ?>
+						<p>有難う御座います!</p>
+					<?php endif ?>
+
+
+          <!-- <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <p>お問い合わせの種類※必須</p>
             <select class="type" name="type">
               <option value="">パーティー</option>
@@ -142,7 +159,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>お問い合わせ内容※必須</p>
             <input type="text" name="message" placeholder="お問い合わせ内容"><br>
             <input id="submit" type="submit" placeholder="submit" value="送信" onclick="submitForm()">
-          </form>
+          </form> -->
+
         </div>
     </div>
 
