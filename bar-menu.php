@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="css/nav_style.css">
     <link rel="stylesheet" href="css/menu.css">
 
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
   </head>
   <body>
     <?php include('navigation.html')?>
@@ -17,10 +15,16 @@
     <div class="black_container">
       <div class="menuWrapper">
 
+				<div id="menu_header">
+					<h1>Bar Menu</h1>
+				</div>
+
+				<div id="menu_text">
+					<p>最高の空間にお客様に満足いただけるお食事と飲み物をご用意しております。</p>
+				</div>
+
+
         <div class="foodwrapper">
-          <div id="menu_header">
-            <h1>Bar Menu</h1>
-          </div>
 
           <div class="menu_food">
             <h2>Food</h2>
@@ -47,9 +51,6 @@
         </div>
 
         <div class="drinkwrapper">
-          <div id="menu_text">
-            <p>最高の空間にお客様に満足いただけるお食事と飲み物をご用意しております。</p>
-          </div>
 
           <div class="menu_drink">
             <h2>Drink</h2>
@@ -85,6 +86,8 @@
 
     </div>
 
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
 
   </body>
 </html>

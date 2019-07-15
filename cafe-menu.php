@@ -15,18 +15,19 @@
     <div class="white_container">
       <div class="menuWrapper">
 
+				<div id="menu_header">
+					<h1>Cafe Menu</h1>
+				</div>
+
+				<div id="menu_text">
+					<p>最高の空間にお客様に満足いただけるお食事と飲み物をご用意しております。</p>
+				</div>
+
+
         <div class="foodwrapper">
-          <div id="menu_header">
-            <h1>Cafe Menu</h1>
-          </div>
 
           <div class="menu_food">
-            <table>
-              <tr>
-                <td><h2>Food</h2></td>
-                <!-- <td><img src="img/line.png"></td> -->
-              </tr>
-            </table>
+            <h2>Food</h2>
           </div>
 
           <div id="seasonal">
@@ -50,17 +51,9 @@
         </div>
 
         <div class="drinkwrapper">
-          <div id="menu_text">
-            <p>最高の空間にお客様に満足いただけるお食事と飲み物をご用意しております。</p>
-          </div>
 
           <div class="menu_drink">
-            <table>
-              <tr>
-                <td><h2>Drink</h2></td>
-                <!-- <td><img src="img/line.png"></td> -->
-              </tr>
-            </table>
+            <h2>Drink</h2>
           </div>
 
           <div id="drink1">
@@ -92,7 +85,9 @@
       <?php include("footer.html")?>
 
     </div>
+
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+
   </body>
 </html>
