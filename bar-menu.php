@@ -2,7 +2,8 @@
 <html lang="ja" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>GFTD CAFE & BAR</title>
+		<meta name="viewport" content="width=device-width">
+    <title>GFTD CAFE & BAR: Bar Menu</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/nav_style.css">

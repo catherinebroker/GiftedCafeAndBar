@@ -2,8 +2,7 @@
 // define variables and set to empty values
 $to = "catherinemariebroker@gmail.com";
 $type = $name = $tel = $email = $mailCheck = $message = "";
-$typeErr = $nameErr = $emailErr = $mailcheckErr = $messageErr = $messageStatus = "";
-$subject = "test";
+$typeErr = $nameErr = $emailErr = $mailcheckErr = $messageErr = $messageStatus = $subject = "";
 
 //Protect input values from malicious code
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -62,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Check input values and send if everything is cool.
   if (empty($name) || empty($email) || !filter_var($email) || empty($subject) || empty($message)) {
-    $messageStatus = "Please check that every box has been completed and that the email address entered is valid.";
+    $messageStatus = "Please check that every box has been completed, the email addresses match, and that the email address entered is valid.";
   } else {
     $page_flag = 1;
   }
@@ -78,7 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="ja" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>GFTD CAFE & BAR</title>
+		<meta name="viewport" content="width=device-width">
+    <title>GFTD CAFE & BAR: Access</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/nav_style.css">
@@ -87,21 +87,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-
-    <script type="text/javascript">
-      function submitForm() {
-
-        alert("<?= $messageStatus?><?= $nameErr?><?= $emailErr?><?= $messageErr?>");
-      }
-    </script>
-
   </head>
   <body>
       <?php include('navigation.html')?>
 
       <div class="accesswrapper">
 
+
         <div class="map">
+					<div class="header">
+            <h1>Access</h1>
+          </div>
           <img src="img/map.png" alt="">
         </div>
 
@@ -137,33 +133,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<?php else: ?>
 						<p>有難う御座います!</p>
 					<?php endif ?>
-
-
-          <!-- <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <p>お問い合わせの種類※必須</p>
-            <select class="type" name="type">
-              <option value="">パーティー</option>
-              <option value="">イベント</option>
-              <option value="">貸切</option>
-              <option value="">プロモーション</option>
-              <option value="">その他</option>
-            </select>
-            <p>お名前※必須</p>
-            <input type="text" name="name" placeholder="お名前">
-            <p>お電話番号</p>
-            <input type="tel" name="tel" placeholder="お電話番号">
-            <p>メールアドレス ※必須</p>
-            <input type="email" name="email" placeholder="メールアドレス">
-            <p>メールアドレス(確認) ※必須</p>
-            <input type="email" name="mailCheck" placeholder="メールアドレス">
-            <p>お問い合わせ内容※必須</p>
-            <input type="text" name="message" placeholder="お問い合わせ内容"><br>
-            <input id="submit" type="submit" placeholder="submit" value="送信" onclick="submitForm()">
-          </form> -->
-
         </div>
     </div>
 
     <?php include('footer.html')?>
+
+		<script type="text/javascript">
+      function submitForm() {
+
+        alert("<?= $messageStatus?><?= $nameErr?><?= $emailErr?><?= $messageErr?>");
+      }
+    </script>
   </body>
 </html>

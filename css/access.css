@@ -12,8 +12,13 @@
   grid-row: 1;
 }
 
+.map img {
+	margin-top: 12px;
+}
+
 table tr td a {
   color: #000;
+	cursor: pointer;
 }
 
 .contactDetails {
@@ -63,6 +68,48 @@ table tr td a {
 
 
 
+/****************************************
+
+              MEDIA QUERIES
+
+****************************************/
+@media screen and (max-width: 800px) {
+	.accesswrapper {
+	  grid-template-columns: repeat(1, 1fr);
+		text-align: center;
+		width: 100vw;
+	}
+
+	/* Google Map */
+	.map {
+	  grid-column: 1 / 2;
+	  grid-row: 1;
+		padding: 0 10px;
+	}
+
+	/* Contact Details */
+	.contactDetails {
+	  grid-column: 1 / 2;
+	  grid-row: 2;
+		/* max-width: 400px; */
+		padding: 0 10px;
+		text-align: left;
+	}
+
+	.contactDetails table {
+		margin: 0 auto;
+	}
+
+	/* Contact Form */
+	.contactForm {
+	  grid-column: 1 / 2;
+	  grid-row: 3 / 6;
+		max-width: 400px;
+		padding: 10px 10px 0 10px;
+		margin: 0 auto;
+	}
+
+}
 
 
 

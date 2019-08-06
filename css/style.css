@@ -1,5 +1,6 @@
 html {
   margin: 0;
+	width: 100vw;
 }
 
 body {
@@ -36,4 +37,21 @@ h5 {
 #footer {
   text-align: center;
   font-size: 1em;
+	margin: 0 auto;
+}
+
+
+/****************************************
+
+              MEDIA QUERIES
+
+****************************************/
+@media and screen (max-width: 800px) {
+	html {
+	  width: 100vw;
+	}
+
+	body {
+	  width:100vw;
+	}
 }
