@@ -18,11 +18,26 @@
       <?php include('navigation.html')?>
 
       <div class="index_container">
-        <div class="headline">
+
+				<div class="arrow_left">
+					<button id="rollToLeft"><i class="fas fa-chevron-left"></i></button>
+				</div>
+
+				<div class="headline">
           <h1>タダで使える、みんなの場所</h1>
         </div>
 
-        <div class="news">
+				<div class="arrow_right">
+					<button id="rollToRight"><i class="fas fa-chevron-right"></i></button>
+				</div>
+
+				<div class="thumb360">
+					<img src="img/360_icon.png" alt="">
+				</div>
+
+
+
+        <!-- <div class="news">
           <table>
             <tr>
               <td>2019/08/31</td>
@@ -35,22 +50,15 @@
               <td>◆年末年始のお休み◆</td>
             </tr>
           </table>
-        </div>
+        </div> -->
 
-        <div class="views">
+        <!-- <div class="views">
+					<button id="rollToLeft"><i class="fas fa-chevron-left"></i></button>
 
-					<button id="rollToLeft"><img class="shop_thumbnail" src="img/360bg.jpg" alt=""></button>
+					<img class="thumb360" src="img/360_icon.png" alt="">
 
-					<button id="rollToRight"><img class="shop_thumbnail" src="img/360bg.jpg" alt=""></button> <br>
-
-          <!-- <a href="#" onclick="backgroundChange1()"><img class="shop_thumbnail" src="img/360bg.jpg" alt=""></a>
-          <a href="#" onclick="backgroundChange2()"><img class="shop_thumbnail" src="img/360bg.png" alt=""></a>
-          <br>-->
-
-          <img class="thumb360" src="img/360_icon.png" alt="">
-
-
-        </div>
+					<button id="rollToRight"><i class="fas fa-chevron-right"></i></button>
+        </div> -->
 
       </div>
     </div>
