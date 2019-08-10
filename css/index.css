@@ -21,7 +21,7 @@ body {
   grid-gap: 10px;
   /* width: 800px; */
 	width: 600px;
-  margin: 40% auto 0 auto;
+  margin: 30% auto 0 auto;
 }
 
 .arrow_left {
@@ -153,7 +153,7 @@ body {
 		width: 100vw;
 	  margin: 40% auto 0 auto;
 	}
-	
+
 	.thumb360 img {
 		margin-top: -10px;
 	}
