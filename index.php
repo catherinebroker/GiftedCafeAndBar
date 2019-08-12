@@ -35,8 +35,6 @@
 					<img src="img/360_icon.png" alt="">
 				</div>
 
-
-
         <!-- <div class="news">
           <table>
             <tr>
@@ -61,6 +59,7 @@
         </div> -->
 
       </div>
+
     </div>
     <?php include("footer.html")?>
 

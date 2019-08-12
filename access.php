@@ -3,6 +3,7 @@
 $to = "catherinemariebroker@gmail.com";
 $type = $name = $tel = $email = $mailCheck = $message = "";
 $typeErr = $nameErr = $emailErr = $mailcheckErr = $messageErr = $messageStatus = $subject = "";
+$page_flag = 0;
 
 //Protect input values from malicious code
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,13 +26,13 @@ function test_input($data) {
 //Error messages
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["type"])) {
-    $typeErr = "* Type is required.";
+    $typeErr = "※種類は記入必須です。";
   } else {
     $type = test_input($_POST["type"]);
   }
 
   if (empty($_POST["name"])) {
-    $nameErr = "* Name is required.";
+    $nameErr = "※名前は記入必須です。";
   } else {
     $name = test_input($_POST["name"]);
   }
@@ -39,37 +40,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $tel = test_input($_POST["tel"]);
 
   if (empty($_POST["email"])) {
-    $emailErr = "* An email address is required.";
+    $emailErr = "※メールアドレスは記入必須です。";
   } else if ($email != $mailCheck){
-    $emailErr = "Email addresses must match.";
+    $emailErr = "※同じメールアドレスを入力してください。";
   } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     // check if e-mail address is well-formed
-    $emailErr = "* Invalid email format";
+    $emailErr = "※正しいメールアドレスを入力してください。";
   } else {
     $email = test_input($_POST["email"]);
     }
   }
 
   if (empty($_POST["message"])) {
-    $messageErr = "* A message is required.";
+    $messageErr = "※メッセージは記入必須です。";
   } else {
     $message = test_input($_POST["message"]);
   }
 
-	$page_flag = 0;
-
-
   // Check input values and send if everything is cool.
-  if (empty($name) || empty($email) || !filter_var($email) || empty($subject) || empty($message)) {
-    $messageStatus = "Please check that every box has been completed, the email addresses match, and that the email address entered is valid.";
+  if (empty($name) || empty($email) || $email != $mailCheck || empty($message)) {
+    $messageStatus = "※以下の項目を全て入力してください。";
   } else {
     $page_flag = 1;
   }
 
-	// mail send
-	if($page_flag == '1' && $confirmed == 'true') {
-		mail($to, 'test', $message, $email);
+	// Confirmation
+	if ($confirmed == 'true') {
 		$page_flag = 2;
+	}
+
+	// Mail send
+	if($page_flag == 2) {
+		mail($to, $type, $message, $email);
 	}
  ?>
 
@@ -84,17 +86,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/nav_style.css">
     <link rel="stylesheet" href="css/access.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
   </head>
   <body>
-      <?php include('navigation.html')?>
+    <?php include('navigation.html')?>
+
+		<div class="white_container">
 
       <div class="accesswrapper">
 
-
-        <div class="map">
+				<div class="map">
 					<div class="header">
             <h1>Access</h1>
           </div>
@@ -126,23 +126,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <div class="header">
             <h1>Contact</h1>
           </div>
-					<?php if($page_flag == 0): ?>
-						<?php include('contact-form.php'); ?>
-					<?php elseif ($page_flag == 1): ?>
-						<?php include('confirm.php'); ?>
-					<?php else: ?>
-						<p>有難う御座います!</p>
-					<?php endif ?>
-        </div>
-    </div>
+						<?php if($page_flag == 0): ?>
+							<?php include('contact-form.php'); ?>
+						<?php elseif ($page_flag == 1): ?>
+							<?php include('confirm.php'); ?>
+						<?php else: ?>
+							<p class="thankyou">有難う御座います!</p>
+						<?php endif ?>
+    		</div>
 
-    <?php include('footer.html')?>
+			</div>
 
-		<script type="text/javascript">
-      function submitForm() {
+    	<?php include('footer.html')?>
 
-        alert("<?= $messageStatus?><?= $nameErr?><?= $emailErr?><?= $messageErr?>");
-      }
-    </script>
+		</div>
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
   </body>
 </html>

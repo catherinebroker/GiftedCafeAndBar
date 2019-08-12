@@ -4,7 +4,7 @@
   grid-gap: 13px;
   grid-auto-rows: minmax(auto);
   width: 800px;
-  margin: 24px auto 40px;
+  margin: 24px auto 0px;
 }
 
 .map {
@@ -31,8 +31,16 @@ table tr td a {
   grid-row: 1 / 4;
 }
 
+form {
+	margin-top: 12px;
+}
+
 .contactForm form p {
   font-weight: 300;
+}
+
+.info_input {
+	margin-bottom: 24px;
 }
 
 .contactForm form input, .contactForm form select {
@@ -40,33 +48,60 @@ table tr td a {
   height: 39px;
   border: 1px solid #222;
   border-radius: 0;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
 }
 
-.contactForm form input[value] {
-  /* color: #ccc; */
-  /* padding: 0 8px; */
+.contactForm label {
+	font-weight: 600;
 }
 
-.contactForm form input#submit {
-  color: #FFF;
-  background-color: #222;
+.contactForm form input#contactButton,
+.contactForm form input#editMessage {
   margin: 10px 97px 0 97px;
   width: 200px;
   border: 0px;
   cursor: pointer;
 }
 
-.contactForm form input#submit:hover {
-  color: #222;
-  background-color: #FFF;
+.contactForm form input#contactButton:hover,
+.contactForm form input#editMessage:hover {
   margin: 10px 97px 0 97px;
   width: 200px;
   border: 1px solid #222;
   transition: 1s ease;
 }
 
+.contactForm form input#contactButton {
+  color: #FFF;
+  background-color: #222;
+}
 
+.contactForm form input#contactButton:hover {
+  color: #222;
+  background-color: #FFF;
+	border: 1px solid #222;
+}
+
+.contactForm form input#editMessage {
+  color: #222;
+  background-color: #FFF;
+	border: 1px solid #222;
+}
+
+.contactForm form input#editMessage:hover {
+  color: #FFF;
+  background-color: #222;
+}
+
+.contactForm p.error {
+	font-weight: 600;
+	color: red;
+}
+
+.contactForm p.thankyou {
+	font-weight: 600;
+	text-align: center;
+}
 
 /****************************************
 

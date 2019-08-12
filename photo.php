@@ -15,6 +15,7 @@
   <body>
     <?php include('navigation.html')?>
 
+		<div class="white_container">
 		<div class="photo_wrapper">
 		<div id="photo_header">
 			<h1>Photos</h1>
@@ -48,6 +49,6 @@
 	</div>
 
     <?php include('footer.html')?>
-
+		</div>
   </body>
 </html>
