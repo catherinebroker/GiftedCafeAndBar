@@ -4,7 +4,7 @@
   grid-gap: 13px;
   grid-auto-rows: minmax(auto);
   width: 800px;
-  margin: 24px auto 0px;
+  margin: 0 auto;
 }
 
 .map {

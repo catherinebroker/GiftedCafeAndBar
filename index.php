@@ -19,20 +19,22 @@
 
       <div class="index_container">
 
-				<div class="arrow_left">
-					<button id="rollToLeft"><i class="fas fa-chevron-left"></i></button>
-				</div>
+				<div class="index_content">
+					<div class="arrow_left">
+						<button id="rollToLeft"><i class="fas fa-chevron-left"></i></button>
+					</div>
 
-				<div class="headline">
-          <h1>タダで使える、みんなの場所</h1>
-        </div>
+					<div class="headline">
+	          <h1>タダで使える、<div class="headline_break"></div>みんなの場所</h1>
+	        </div>
 
-				<div class="arrow_right">
-					<button id="rollToRight"><i class="fas fa-chevron-right"></i></button>
-				</div>
+					<div class="arrow_right">
+						<button id="rollToRight"><i class="fas fa-chevron-right"></i></button>
+					</div>
 
-				<div class="thumb360">
-					<img src="img/360_icon.png" alt="">
+					<div class="thumb360">
+						<img src="img/360_icon.png" alt="">
+					</div>
 				</div>
 
         <!-- <div class="news">

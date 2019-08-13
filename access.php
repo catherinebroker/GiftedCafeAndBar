@@ -49,13 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $email = test_input($_POST["email"]);
     }
-  }
-
-  if (empty($_POST["message"])) {
+    
+    if (empty($_POST["message"])) {
     $messageErr = "※メッセージは記入必須です。";
   } else {
     $message = test_input($_POST["message"]);
   }
+}
+
+ 
 
   // Check input values and send if everything is cool.
   if (empty($name) || empty($email) || $email != $mailCheck || empty($message)) {

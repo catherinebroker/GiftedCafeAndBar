@@ -1,10 +1,3 @@
-// $(function() {
-//   //Add active class to nav links
-//   $('.navlinks').click(function() {
-//     $('.navlinks').toggleClass('active')
-//   })
-// })
-
 function addActiveClass(idName) {
   document.getElementById(idName).classList.add('active');
 }
@@ -37,105 +30,80 @@ window.addEventListener('load', function() {
 
 // 360 background
 $(window).on('load', function(){
-  var ua = ua = navigator.userAgent.toLowerCase();
-  var isSP = /iphone|ipod|ipad|android/.test(ua);
-  var count = 0;
-  var timer;
-  var eventStart = isSP ? 'touchstart' : 'mousedown';
-  var eventEnd   = isSP ? 'touchend' : 'mouseup';
-  var eventLeave = isSP ? 'touchmove' : 'mouseleave';
+    var ua = ua = navigator.userAgent.toLowerCase();
+    var isSP = /iphone|ipod|ipad|android/.test(ua);
+    var count = 0;
+    var timer;
+    var eventStart = isSP ? 'touchstart' : 'mousedown';
+    var eventEnd   = isSP ? 'touchend' : 'mouseup';
+    var eventLeave = isSP ? 'touchmove' : 'mouseleave';
+    var windowWidth = $(window).width();
 
-	var rollToLeft = document.getElementById('rollToLeft');
-  var rollToRight = document.getElementById('rollToRight');
-
-   // rollToLeft
-  rollToLeft.addEventListener(eventStart, e => {
-    e.preventDefault();
-    var currentPosition = parseInt($("body").css("background-position-x").replace(/%/, ""));
-    timer = setInterval(function(){
-      count++;
-      $('body').animate({"background-position-x": (currentPosition + (count * 15)) + "%"}, 0.0001);
-    }, 10)
-
-	})
+    var rollToLeft = document.getElementById('rollToLeft');
+    var rollToRight = document.getElementById('rollToRight');
 
 
-// for stopping the click
- rollToLeft.addEventListener(eventEnd, e => {
-	e.preventDefault();
-	if (count) {
-		clearInterval(timer);
-		count = 0;
-	}
-});
+    // rollToLeft
+    rollToLeft.addEventListener(eventStart, e => {
+        e.preventDefault();
+        var currentPosition = parseInt($("body").css("background-position-x").replace(/%/, ""));
+        timer = setInterval(function(){
+            count++;
+            if (windowWidth >= 800) {
+                $('body').animate({"background-position-x": (currentPosition + (count * 15)) + "%"}, 0.0001);
+            } else {$('body').animate({"background-position-x": (currentPosition + (count * 1)) + "%"}, 0.0001);}}, 10)
+    });
 
-// when cursor moves while the user is clicking
-rollToLeft.addEventListener(eventLeave, e => {
-    e.preventDefault();
-    let el;
-    el = isSP ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : rollToLeft;
-    if (!isSP || el !== rollToLeft) {
-      clearInterval(timer);
-      count = 0;
-    }
-  });
+    // for stopping the click
+    rollToLeft.addEventListener(eventEnd, e => {
+        e.preventDefault();
+        if (count) {
+            clearInterval(timer);
+            count = 0;
+        }
+    });
 
-	// rollToRight
-  rollToRight.addEventListener(eventStart, e => {
-    e.preventDefault();
-    var currentPosition = parseInt($("body").css("background-position-x").replace(/%/, ""));
-    timer = setInterval(function(){
-      count++;
-      $('body').animate({"background-position-x": (currentPosition - (count * 15)) + "%"}, 0.0001);
-    }, 10)
-  })
+    // when cursor moves while the user is clicking
+    rollToLeft.addEventListener(eventLeave, e => {
+        e.preventDefault();
+        let el;
+        el = isSP ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : rollToLeft;
+        if (!isSP || el !== rollToLeft) {
+            clearInterval(timer);
+            count = 0;
+        }
+    });
 
-   rollToRight.addEventListener(eventEnd, e => {
-    e.preventDefault();
-    if (count) {
-      clearInterval(timer);
-      count = 0;
-    }
-  });
 
-   rollToRight.addEventListener(eventLeave, e => {
-    e.preventDefault();
-    let el;
-    el = isSP ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : rollToRight;
-    if (!isSP || el !== rollToRight) {
-      console.log(el);
-      clearInterval(timer);
-      count = 0;
-    }
-  });
+
+
+    // rollToRight
+    rollToRight.addEventListener(eventStart, e => {
+        e.preventDefault();
+        var currentPosition = parseInt($("body").css("background-position-x").replace(/%/, ""));
+        timer = setInterval(function(){
+            count++;
+            if (windowWidth >= 800) {
+            $('body').animate({"background-position-x": (currentPosition - (count * 15)) + "%"}, 0.0001);
+					} else {$('body').animate({"background-position-x": (currentPosition - (count * 1)) + "%"}, 0.0001);}}, 10)
+    });
+
+    rollToRight.addEventListener(eventEnd, e => {
+       e.preventDefault();
+        if (count) {
+            clearInterval(timer);
+            count = 0;
+        }
+    });
+
+    rollToRight.addEventListener(eventLeave, e => {
+        e.preventDefault();
+        let el;
+        el = isSP ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : rollToRight;
+        if (!isSP || el !== rollToRight) {
+            console.log(el);
+            clearInterval(timer);
+            count = 0;
+        }
+    });
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function backgroundChange1() {
-//   document.getElementById('top_bg').style.backgroundImage =
-//     "url('img/360bg.jpg')"
-// }
-//
-// function backgroundChange2() {
-//   document.getElementById('top_bg').style.backgroundImage =
-//     "url('img/360bg.png')"
-// }
-//
-// function backgroundChange3() {
-//   document.getElementById('top_bg').style.backgroundImage =
-//     "url('img/360bg.jpg')"
-// }
